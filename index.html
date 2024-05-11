@@ -2,6 +2,13 @@
 <html>
 <head>
     <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Graph That SH*T</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://kit.fontawesome.com/1cf483120b.js" crossorigin="anonymous"></script>	
+        <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAi0RCj8aLdKFX-cvYkW6kDveuaUlMnpes&libraries=places&callback=initMap"></script> 
 </head>
 <body>
     <div class="page">
@@ -11,9 +18,22 @@
         </div>
         <div class="my-dropzone">
             <!-- Image will go here -->
-            <form action="/upload" class="dropzone" id="myDropzone"></form>
+            <h3>Upload your Image :</h3>
+            <div class="drag-area">
+                <div class="icon">
+                    <i class="fas fa-images"></i>
+                </div>
+                <span class="header">Drag & Drop</span>
+                <span class="header">or <span class="button">browse</span></span>
+                <input type="file" hidden />
+                <span class="support">Supports: JPEG, JPG, PNG</span>
+                </div>
+            <div>
+                <button class="download">Download</button>
+            </div>
         </div>
     </div>
-</body>
+
 <script src="imageDrop.js"></script>
+</body>
 </html>

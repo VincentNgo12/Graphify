@@ -1,24 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
 body {
     background-color: teal;
     display: flex;
-    justify-content: center;
-    align-items: center;
     height: 100vh;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    min-height: 100vh;
     margin: 0;
-    font-family: Arial, sans-serif;
+    background: -webkit-linear-gradient(to right, teal, #afdcf3); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+        to top,
+        teal,
+        #afdcf3
+  );
 }
 .container {
     background-color: #2C3E50;
     color: white;
     padding: 20px;
-    width: 300px;
+    width: 25%;
     margin-right: 50px;
 }
 .my-dropzone {
-    border: 2px solid black;
-    width: 300px;
-    height: 300px;
+    max-width: 650px;
+    width: 70%;
+    padding: 30px;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
+
+.drag-area {
+    height: 70%;
+    border: 3px dashed #e0eafc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 10px auto;
+}
+
+
 .page {
     display: flex;
+    min-height: 75%;    
 }
