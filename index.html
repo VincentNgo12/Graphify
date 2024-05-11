@@ -2,6 +2,7 @@
 <html>
 <head>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="drag.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Graph That SH*T</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
@@ -18,14 +19,14 @@
         </div>
         <div class="my-dropzone">
             <!-- Image will go here -->
-            <h3>Upload your Image :</h3>
+            <h3 id="dropZoneTitle">Upload your Image :</h3>
             <div class="drag-area">
                 <div class="icon">
                     <i class="fas fa-images"></i>
                 </div>
                 <span class="header">Drag & Drop</span>
-                <span class="header">or <span class="button">browse</span></span>
-                <input type="file" hidden />
+                <span class="header">or <span class="button" id="browseButton">browse</span></span>
+                <input type="file" id="fileUpload" hidden />
                 <span class="support">Supports: JPEG, JPG, PNG</span>
                 </div>
             <div>
@@ -34,6 +35,6 @@
         </div>
     </div>
 
-<script src="imageDrop.js"></script>
 </body>
+<script src="imageDrop.js"></script>
 </html>
