@@ -56,7 +56,7 @@ dropArea.addEventListener("drop", (event) => {
       fileReader.onload = () => {
         let fileURL = fileReader.result;
         // console.log(fileURL);
-        let imgTag = `<img src="${fileURL}" alt="">`;
+        let imgTag = `<img src="${fileURL}" id="imgDisplay" alt="">`;
         dropArea.innerHTML = imgTag;
       };
       fileReader.readAsDataURL(file);
