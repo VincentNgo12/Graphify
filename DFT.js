@@ -18,6 +18,7 @@ function DFT(points) {
         const exponentialTerm = new Complex(Math.cos(angle), -Math.sin(angle));
         sum.add(values[n].multiply(exponentialTerm));
       }
+
       coefficients.push(new FourierCoefficient(sum, k, N));
     }
     
@@ -33,10 +34,11 @@ class FourierCoefficient {
         throw new TypeError("Argument 'complex' must be a Complex number");
       }
   
-      const real = complex.real / N;
-      const imag = complex.imag / N;
+      const real = complex.re / N;
+      const imag = complex.im / N;
       this.freq = frequency;
       this.phase = Math.atan2(imag, real);
+      console.log(complex.re);/////////////////////////////////////////////////////////////////////////////
       this.mag = Math.sqrt(real * real + imag * imag);
     }
 }
