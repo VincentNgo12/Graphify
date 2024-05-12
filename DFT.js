@@ -2,20 +2,21 @@ function DFT(points) {
     if (!Array.isArray(points)) {
       throw new TypeError("Argument 'points' must be an array");
     }
-  
+    
     const N = points.length;
     const m = Math.floor(N / 2);
-    const coefficients = [];
+    let coefficients = [];
   
     // Convert points to Complex numbers
     const values = points.map(point => new Complex(point.x, point.y));
-  
+
     for (let k = -m; k < m; k++) {
       let sum = new Complex(0, 0);
+
       for (let n = 0; n < N; n++) {
         const angle = k * n * ((2 * Math.PI) / N);
         const exponentialTerm = new Complex(Math.cos(angle), -Math.sin(angle));
-        sum = sum.add(values[n].multiply(exponentialTerm));
+        sum.add(values[n].multiply(exponentialTerm));
       }
       coefficients.push(new FourierCoefficient(sum, k, N));
     }
@@ -23,6 +24,7 @@ function DFT(points) {
     coefficients = sortCoefficients(coefficients); //sort coefficients
     return coefficients;
 }
+
 
 
 class FourierCoefficient {

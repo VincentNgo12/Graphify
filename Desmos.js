@@ -1,4 +1,5 @@
-var myCalculator = Desmos.Calculator(document.getElementById('DesmosCalculator'));
+var DesmosCalculator = document.getElementById('calculator');
+var myCalculator = Desmos.Calculator(DesmosCalculator);
 
 function loadDesmos(fullContours){
     // initialize the desmos expressions
@@ -24,7 +25,8 @@ function loadDesmos(fullContours){
 
 function calculateDFT(fullContours){
     let coefficientsList = [];
-    for(let i=0; i<fullContours.length; i++){
+    
+    for(const i in fullContours){
         let points = fullContours[i];
         let coefficients = DFT(points);
         
@@ -48,6 +50,7 @@ function calculateDFT(fullContours){
 
         coefficientsList.push(c);
     }
+
 
     return coefficientsList;
 }

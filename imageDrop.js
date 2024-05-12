@@ -6,6 +6,7 @@ let button = document.querySelector("#browseButton");
 let input = document.querySelector("#fileUpload");
 let graphButton = document.getElementById("graphButton");
 let file;
+var fullContours; //global var to store full contours array
 
 
 button.onclick = () => {
@@ -49,7 +50,9 @@ dropArea.addEventListener("drop", (event) => {
 
 // When graph button is clicked
 graphButton.addEventListener("click", () => {
-
+  loadDesmos(fullContours);
+  DesmosCalculator.style.display = "flex";
+  document.querySelector(".page").style.display = "none";
 })
 
 
@@ -70,7 +73,7 @@ graphButton.addEventListener("click", () => {
 
         // Add onload event listener to the image
         img.onload = function() {
-          var fullContours = getContours("imgDisplay"); //full arrays of contours points
+          fullContours = getContours("imgDisplay"); //full arrays of contours points
         };
       };
       fileReader.readAsDataURL(file);
