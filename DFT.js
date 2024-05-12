@@ -1,3 +1,19 @@
+class FourierCoefficient {
+    constructor(complex, frequency, N) {
+      if (!(complex instanceof Complex)) {
+        throw new TypeError("Argument 'complex' must be a Complex number");
+      }
+  
+      const real = complex.real / N;
+      const imag = complex.imag / N;
+      this.freq = frequency;
+      this.phase = Math.atan2(imag, real);
+      this.mag = Math.sqrt(real * real + imag * imag);
+    }
+}
+  
+
+
 class Complex {
     constructor(real, imag) {
       this.re = real;
