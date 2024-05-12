@@ -58,7 +58,13 @@ dropArea.addEventListener("drop", (event) => {
         // console.log(fileURL);
         let imgTag = `<img src="${fileURL}" id="imgDisplay" alt="">`;
         dropArea.innerHTML = imgTag;
-        console.log(getContours(imgDisplay));
+        // Get the image element
+        let img = document.getElementById("imgDisplay");
+
+        // Add onload event listener to the image
+        img.onload = function() {
+          getContours("imgDisplay");
+        };
       };
       fileReader.readAsDataURL(file);
     } else {
