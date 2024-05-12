@@ -45,3 +45,10 @@ body {
     min-height: 75%;
     max-height: 80%;    
 }
+
+
+#DesmosCalculator{
+    width: 100%;
+    height: 100vh;
+    display: none;
+}

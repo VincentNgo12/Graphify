@@ -4,6 +4,7 @@ const dragText = document.querySelector(".header");
 
 let button = document.querySelector("#browseButton");
 let input = document.querySelector("#fileUpload");
+let graphButton = document.getElementById("graphButton");
 let file;
 
 
@@ -46,6 +47,12 @@ dropArea.addEventListener("drop", (event) => {
   });
 
 
+// When graph button is clicked
+graphButton.addEventListener("click", () => {
+
+})
+
+
   function displayFile() {
     let fileType = file.type;
     // console.log(fileType);
@@ -63,7 +70,7 @@ dropArea.addEventListener("drop", (event) => {
 
         // Add onload event listener to the image
         img.onload = function() {
-          getContours("imgDisplay");
+          var fullContours = getContours("imgDisplay"); //full arrays of contours points
         };
       };
       fileReader.readAsDataURL(file);

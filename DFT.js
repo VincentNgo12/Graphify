@@ -19,7 +19,8 @@ function DFT(points) {
       }
       coefficients.push(new FourierCoefficient(sum, k, N));
     }
-  
+    
+    coefficients = sortCoefficients(coefficients); //sort coefficients
     return coefficients;
 }
 
@@ -37,6 +38,16 @@ class FourierCoefficient {
       this.mag = Math.sqrt(real * real + imag * imag);
     }
 }
+
+
+function sortCoefficients(coefficients) {
+    if (!Array.isArray(coefficients)) {
+      throw new TypeError("Argument 'coefficients' must be an array");
+    }
+  
+    return coefficients.sort((a, b) => b.magnitude - a.magnitude);
+}
+
   
 
 
