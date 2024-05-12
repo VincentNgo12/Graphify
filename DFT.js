@@ -38,7 +38,6 @@ class FourierCoefficient {
       const imag = complex.im / N;
       this.freq = frequency;
       this.phase = Math.atan2(imag, real);
-      console.log(complex.re);/////////////////////////////////////////////////////////////////////////////
       this.mag = Math.sqrt(real * real + imag * imag);
     }
 }
@@ -63,8 +62,8 @@ class Complex {
   
     add(other) {
       if (other instanceof Complex) {
-        this.re += other.real;
-        this.im += other.imag;
+        this.re += other.re;
+        this.im += other.im;
       } else {
         throw new TypeError("Argument must be a Complex number");
       }
@@ -81,7 +80,7 @@ class Complex {
     }
   
     toString() {
-      const imagStr = this.imag >= 0 ? `+ ${this.imag}i` : `- ${Math.abs(this.imag)}i`;
-      return `${this.real}${imagStr}`;
+      const imagStr = this.im >= 0 ? `+ ${this.im}i` : `- ${Math.abs(this.im)}i`;
+      return `${this.re}${imagStr}`;
     }
   }
