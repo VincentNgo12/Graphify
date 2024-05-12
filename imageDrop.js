@@ -58,6 +58,7 @@ dropArea.addEventListener("drop", (event) => {
         // console.log(fileURL);
         let imgTag = `<img src="${fileURL}" id="imgDisplay" alt="">`;
         dropArea.innerHTML = imgTag;
+        console.log(getContours(imgDisplay));
       };
       fileReader.readAsDataURL(file);
     } else {

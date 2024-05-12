@@ -63,3 +63,9 @@
     height: 100%;
     object-fit: fill;
 }
+
+
+#outputCanvas{
+    width: 50%;
+    height: 100%;
+}
