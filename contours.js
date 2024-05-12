@@ -4,7 +4,7 @@ function getContours(image){
     cv.cvtColor(src, src, cv.COLOR_RGBA2GRAY, 0);
     cv.threshold(src, src, 100, 255, cv.THRESH_BINARY);
     // You can try more different parameters
-    cv.Canny(src, dst, 50, 100, 3, false);
+    //cv.Canny(src, dst, 50, 100, 3, false);
     let contours = new cv.MatVector();
     let hierarchy = new cv.Mat();
     // You can try more different parameters        
