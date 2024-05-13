@@ -7,10 +7,13 @@ function getContours(image){
     // // You can try more different parameters
     // cv.blur(src, dst, ksize, anchor, cv.BORDER_DEFAULT);
 
-    cv.cvtColor(src, src, cv.COLOR_RGBA2GRAY, 0);
-    cv.threshold(src, src, 127, 255, cv.THRESH_OTSU);
-    // You can try more different parameters
-    //cv.Canny(src, dst, 50, 100, 3, false);
+    cv.cvtColor(src, src, cv.COLOR_RGBA2GRAY, 0); //Set the color scheme 
+
+
+    cv.Canny(src, dst, 100, 200, 3, false); //Edge detection
+    cv.threshold(src, src, 127, 255, cv.THRESH_OTSU); //set the threshold
+
+
     let contours = new cv.MatVector();
     let hierarchy = new cv.Mat();
     // You can try more different parameters        
