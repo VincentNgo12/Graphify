@@ -1,5 +1,7 @@
-const dropArea = document.querySelector(".drag-area");
+const dropArea = document.getElementById("drag-area");
+const displayArea = document.getElementById("display-area");
 const dragText = document.querySelector(".header");
+const removeButton = document.getElementById("removeImage");
 
 
 let button = document.querySelector("#browseButton");
@@ -56,6 +58,15 @@ graphButton.addEventListener("click", () => {
 })
 
 
+//When remove image button is clicked
+removeButton.addEventListener("click", ()=>{
+  displayArea.classList.add('hidden');
+  dropArea.classList.remove('hidden');
+  removeButton.classList.add('hidden');
+  document.getElementById("graphButton").classList.add('disable');
+})
+
+
   function displayFile() {
     let fileType = file.type;
     // console.log(fileType);
@@ -66,13 +77,16 @@ graphButton.addEventListener("click", () => {
       fileReader.onload = () => {
         let fileURL = fileReader.result;
         // console.log(fileURL);
-        let imgTag = `<img src="${fileURL}" id="imgDisplay" alt="">`;
-        dropArea.innerHTML = imgTag;
+        dropArea.classList.add("hidden"); //hide the drop area
         // Get the image element
         let img = document.getElementById("imgDisplay");
+        img.src = fileURL;
 
         // Add onload event listener to the image
         img.onload = function() {
+          displayArea.classList.remove('hidden'); //show the display image
+          removeButton.classList.remove('hidden'); //show the buttons
+          document.getElementById("graphButton").classList.remove('disable');
           fullContours = getContours("imgDisplay"); //full arrays of contours points
         };
       };

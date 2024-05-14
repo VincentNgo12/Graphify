@@ -25,7 +25,10 @@
         <div class="my-dropzone">
             <!-- Image will go here -->
             <h3 id="dropZoneTitle">Upload your Image :</h3>
-            <div class="drag-area">
+            <div class="display-area hidden" id="display-area">
+                <img src="" id="imgDisplay" alt="">
+            </div>
+            <div class="drag-area" id="drag-area">
                 <div class="icon">
                     <i class="fas fa-images"></i>
                 </div>
@@ -33,9 +36,10 @@
                 <span class="header">or <span class="button" id="browseButton">browse</span></span>
                 <input type="file" id="fileUpload" hidden />
                 <span class="support">Supports: JPEG, JPG, PNG</span>
-                </div>
-            <div>
-                <button class="download" id="graphButton">Graph Now!</button>
+            </div>
+            <div style="display: flex; flex-direction: row;">
+                <button class="removeImage hidden" id="removeImage">Remove Image</button>
+                <button class="download disable" id="graphButton">Graph Now!</button>
             </div>
         </div>
     </div>
