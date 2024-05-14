@@ -17,7 +17,7 @@ function getContours(image){
     let contours = new cv.MatVector();
     let hierarchy = new cv.Mat();
     // You can try more different parameters        
-    cv.findContours(src, contours, hierarchy, cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE);
+    cv.findContours(src, contours, hierarchy, cv.RETR_TREE, cv.CHAIN_APPROX_NONE);
 
 
     let contourPoints = getContourCoordinates(contours);
