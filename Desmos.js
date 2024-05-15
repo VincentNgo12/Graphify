@@ -9,7 +9,7 @@ function loadDesmos(fullContours){
     let coefficientsList = calculateDFT(fullContours);
 
     for(let i=0;i<coefficientsList.length;i++){
-        if(coefficientsList[i].mag.length < 10 && i>0) continue;
+        //if(coefficientsList[i].mag.length < 10 && i>0) continue;
         expressions.push(
             { id: `listAmp${i}`, latex: `R_{p${i}}=[${coefficientsList[i].mag}]` },
             { id: `listFreq${i}`, latex: `F_{p${i}}=[${coefficientsList[i].freq}]` },

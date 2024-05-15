@@ -2,22 +2,31 @@ function getContours(image){
     let src = cv.imread(image);
     let dst = cv.Mat.zeros(src.rows, src.cols, cv.CV_8UC3);
 
-    // let ksize = new cv.Size(10, 10);
-    // let anchor = new cv.Point(-1, -1);
-    // // You can try more different parameters
-    // cv.blur(src, dst, ksize, anchor, cv.BORDER_DEFAULT);
+    // // Pre-processing: Noise reduction with opening
+    // let kernel = cv.getStructuringElement(cv.MORPH_ELLIPSE, new cv.Size(3, 3));
+    // cv.morphologyEx(src, src, cv.MORPH_OPEN, kernel);
+
+    kernel = cv.getStructuringElement(cv.MORPH_ELLIPSE, new cv.Size(3,3));
+
+    // MORPH_OPEN = removes noise (erosion then dilation)
+    cv.morphologyEx(src, src, cv.MORPH_OPEN, kernel);
+
+    kernel = cv.getStructuringElement(cv.MORPH_ELLIPSE, new cv.Size(2,2));
+
+    // MORPH_CLOSE - closes small holes inside the foreground objects, or small black points on the object (dilation then erosion)
+    cv.morphologyEx(src, src, cv.MORPH_CLOSE, kernel); 
 
     cv.cvtColor(src, src, cv.COLOR_RGBA2GRAY, 0); //Set the color scheme 
 
 
-    cv.Canny(src, dst, 100, 200, 3, false); //Edge detection
-    cv.threshold(src, src, 127, 255, cv.THRESH_BINARY); //set the threshold
+    //cv.Canny(src, dst, 100, 200, 3, false); //Edge detection
+    cv.threshold(src, src, 150, 255, cv.THRESH_BINARY + cv.THRESH_OTSU)[1]; //set the threshold
 
 
     let contours = new cv.MatVector();
     let hierarchy = new cv.Mat();
     // You can try more different parameters        
-    cv.findContours(src, contours, hierarchy, cv.RETR_TREE, cv.CHAIN_APPROX_NONE);
+    cv.findContours(src, contours, hierarchy, cv.RETR_TREE, cv.CHAIN_APPROX_NONE );
 
 
     let contourPoints = getContourCoordinates(contours);
