@@ -11,7 +11,7 @@ function getContours(image){
 
 
     cv.Canny(src, dst, 100, 200, 3, false); //Edge detection
-    cv.threshold(src, src, 127, 255, cv.THRESH_OTSU); //set the threshold
+    cv.threshold(src, src, 127, 255, cv.THRESH_BINARY); //set the threshold
 
 
     let contours = new cv.MatVector();

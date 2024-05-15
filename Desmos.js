@@ -3,7 +3,7 @@ var myCalculator = Desmos.Calculator(DesmosCalculator);
 
 function loadDesmos(fullContours){
     // initialize the desmos expressions
-    let expressions = [{ id: 'slider', sliderBounds: { min: 0, max: 6.28, step: 0 }, latex: 't_{1}=0'}];
+    let expressions = [{ id: 'slider', sliderBounds: { min: 0, max: 6.28, step: 0 }, latex: 't_{1}=6.28'}];
 
     //Get the list of coefficients
     let coefficientsList = calculateDFT(fullContours);
