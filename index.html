@@ -20,26 +20,47 @@
                   <span>Made Possible With Mrs. Robertson's Teachings</span>
                 </h1>
             </div>
-            <img src="VincBalls_Logo.png" alt="VincBalls Logo">
+             
         </div>
-        <div class="my-dropzone">
-            <!-- Image will go here -->
-            <h3 id="dropZoneTitle">Upload your Image :</h3>
-            <div class="display-area hidden" id="display-area">
-                <img src="" id="imgDisplay" alt="">
+        <div class="container2">
+            <!-- Option tabs to switch between drawing mode and upload image mode -->
+            <div class="mode-tabs">
+                <input type="radio" id="radio-1" name="tabs" checked="">
+                <label class="tab" for="radio-1">Draw</label>
+                <input type="radio" id="radio-2" name="tabs">
+                <label class="tab" for="radio-2">Image</label>
+                <span class="glider"></span>
             </div>
-            <div class="drag-area" id="drag-area">
-                <div class="icon">
-                    <i class="fas fa-images"></i>
+
+
+            <!-- Drawing mode -->
+            <div class="my-canvas">
+                <!-- Canvas content will go here -->
+                <h3>Draw on the Canvas:</h3>
+                <canvas id="drawingCanvas" width="500" height="500" style="border:1px solid #000000;"></canvas>
+            </div>
+
+
+            <!-- Image mode -->
+            <div class="my-dropzone inactive">
+                <!-- Image will go here -->
+                <h3 id="dropZoneTitle">Upload your Image :</h3>
+                <div class="display-area hidden" id="display-area">
+                    <img src="" id="imgDisplay" alt="">
                 </div>
-                <span class="header">Drag & Drop</span>
-                <span class="header">or <span class="button" id="browseButton">browse</span></span>
-                <input type="file" id="fileUpload" hidden />
-                <span class="support">Supports: JPEG, JPG, PNG</span>
-            </div>
-            <div style="display: flex; flex-direction: row;">
-                <button class="removeImage hidden" id="removeImage">Remove Image</button>
-                <button class="download disable" id="graphButton">Graph Now!</button>
+                <div class="drag-area" id="drag-area">
+                    <div class="icon">
+                        <i class="fas fa-images"></i>
+                    </div>
+                    <span class="header">Drag & Drop</span>
+                    <span class="header">or <span class="button" id="browseButton">browse</span></span>
+                    <input type="file" id="fileUpload" hidden />
+                    <span class="support">Supports: JPEG, JPG, PNG</span>
+                </div>
+                <div style="display: flex; flex-direction: row;">
+                    <button class="removeImage hidden" id="removeImage">Remove Image</button>
+                    <button class="download disable" id="graphButton">Graph Now!</button>
+                </div>
             </div>
         </div>
     </div>
@@ -52,4 +73,16 @@
 <script src="DFT.js"></script>
 <script src="Desmos.js"></script>
 <script src="imageDrop.js"></script>
+<!-- Script for mode-tabs toggle between modes -->
+<script>
+    document.getElementById('radio-1').addEventListener('change', function() {
+        document.querySelector('.my-dropzone').classList.add('inactive');
+        document.querySelector('.my-canvas').classList.remove('inactive');
+    });
+
+    document.getElementById('radio-2').addEventListener('change', function() {
+        document.querySelector('.my-dropzone').classList.remove('inactive');
+        document.querySelector('.my-canvas').classList.add('inactive');
+    });
+</script>
 </html> 

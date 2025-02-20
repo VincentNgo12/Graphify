@@ -1,3 +1,6 @@
+/* This file is my implementation of the Discrete Fourier Transform used */
+
+
 function DFT(points) {
     if (!Array.isArray(points)) {
       throw new TypeError("Argument 'points' must be an array");
