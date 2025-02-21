@@ -8,10 +8,13 @@ function getContours(image){
 
 
     cv.cvtColor(src, src, cv.COLOR_RGBA2GRAY, 0); //Set the color scheme 
+    // Invert the bit image color
+    //cv.bitwise_not(src, src);
+
 
 
     //cv.Canny(src, dst, 100, 200, 3, false); //Edge detection
-    cv.threshold(src, src, 150, 255, cv.THRESH_BINARY + cv.THRESH_OTSU)[1]; //set the threshold
+    cv.threshold(src, src, 127, 255, cv.THRESH_BINARY + cv.THRESH_OTSU)[1]; //set the threshold
 
 
     let contours = new cv.MatVector();

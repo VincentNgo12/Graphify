@@ -30,7 +30,7 @@ function DFT(points) {
 }
 
 
-
+//The Fourier Coefficient class
 class FourierCoefficient {
     constructor(complex, frequency, N) {
       if (!(complex instanceof Complex)) {
@@ -46,6 +46,7 @@ class FourierCoefficient {
 }
 
 
+//Function to sort the coefficients
 function sortCoefficients(coefficients) {
     if (!Array.isArray(coefficients)) {
       throw new TypeError("Argument 'coefficients' must be an array");
@@ -56,13 +57,14 @@ function sortCoefficients(coefficients) {
 
   
 
-
+//The Complex number class
 class Complex {
     constructor(real, imag) {
       this.re = real;
       this.im = imag;
     }
-  
+    
+    //Method to add two complex numbers
     add(other) {
       if (other instanceof Complex) {
         this.re += other.re;
@@ -71,7 +73,8 @@ class Complex {
         throw new TypeError("Argument must be a Complex number");
       }
     }
-  
+    
+    //Method to multiply two complex numbers
     multiply(other) {
       if (other instanceof Complex) {
         const newReal = this.re * other.re - this.im * other.im;
@@ -81,7 +84,8 @@ class Complex {
         throw new TypeError("Argument must be a Complex number");
       }
     }
-  
+    
+    //Method to return the string representation of a Complex Nubmer object
     toString() {
       const imagStr = this.im >= 0 ? `+ ${this.im}i` : `- ${Math.abs(this.im)}i`;
       return `${this.re}${imagStr}`;

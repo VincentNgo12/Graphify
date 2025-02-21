@@ -5,6 +5,9 @@ var calculatorPage = document.getElementById('calculator-page');
 var DesmosCalculator = document.getElementById('calculator');
 var myCalculator = Desmos.Calculator(DesmosCalculator);
 
+
+// Function to load the Desmos calculator with the Fourier coefficients
+// and the parametric equations for each contour
 function loadDesmos(fullContours){
     // initialize the desmos expressions
     let expressions = [{ id: 'slider', sliderBounds: { min: 0, max: 6.28, step: 0 }, latex: 't_{1}=6.28'}];
@@ -13,7 +16,6 @@ function loadDesmos(fullContours){
     let coefficientsList = calculateDFT(fullContours);
 
     for(let i=0;i<coefficientsList.length;i++){
-        //if(coefficientsList[i].mag.length < 10 && i>0) continue;
         expressions.push(
             { id: `listAmp${i}`, latex: `R_{p${i}}=[${coefficientsList[i].mag}]` },
             { id: `listFreq${i}`, latex: `F_{p${i}}=[${coefficientsList[i].freq}]` },
@@ -28,12 +30,15 @@ function loadDesmos(fullContours){
 
 
 
+// Function to calculate the Discrete Fourier Transform 
+// (transform from coordinates to Fourier coefficients for each contour)
 function calculateDFT(fullContours){
     let coefficientsList = [];
     
+    // Loop through each contours
     for(const i in fullContours){
         let points = fullContours[i];
-        let coefficients = DFT(points);
+        let coefficients = DFT(points); //Use the DFT() function to calculate the coefficients
         
         // consecutive array of current coefficients properties 
         let mag = [];
