@@ -1,3 +1,6 @@
+/* Code the handle the graphing using Demos API */
+
+
 var DesmosCalculator = document.getElementById('calculator');
 var myCalculator = Desmos.Calculator(DesmosCalculator);
 

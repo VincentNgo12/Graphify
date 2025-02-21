@@ -54,7 +54,9 @@
     object-fit: cover;
   }
 
-  .download {
+
+  /* Style for graph button */
+  .graph-button {
     background-color:#4CAF50;
     border: none;
     color: white;
@@ -70,7 +72,9 @@
     width: 100%;
   }
 
-  .removeImage{
+
+  /* Style for remove image button */
+  .remove-button{
     background-color:#d51010;
     border: none;
     color: white;

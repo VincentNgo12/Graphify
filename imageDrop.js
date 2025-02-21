@@ -1,3 +1,7 @@
+/* Code to handle the image drop events, also handle the call the extract contours
+coordinates of the uploaded images. */
+
+
 const dropArea = document.getElementById("drag-area");
 const displayArea = document.getElementById("display-area");
 const dragText = document.querySelector(".header");
@@ -6,7 +10,7 @@ const removeButton = document.getElementById("removeImage");
 
 let button = document.querySelector("#browseButton");
 let input = document.querySelector("#fileUpload");
-let graphButton = document.getElementById("graphButton");
+let graphButton = document.getElementById("graphButton-image");
 let file;
 var fullContours; //global var to store full contours array
 
@@ -28,14 +32,12 @@ dropArea.addEventListener("dragover", (event) => {
     event.preventDefault();
     dropArea.classList.add("active");
     dragText.textContent = "Release to Upload";
-    // console.log('File is inside the drag area');
 });
 
 
   // when file leave the drag area
 dropArea.addEventListener("dragleave", () => {
     dropArea.classList.remove("active");
-    // console.log('File left the drag area');
     dragText.textContent = "Drag & Drop";
 });
 
@@ -43,13 +45,12 @@ dropArea.addEventListener("dragleave", () => {
 // when file is dropped
 dropArea.addEventListener("drop", (event) => {
     event.preventDefault();
-    // console.log('File is dropped in drag area');
     file = event.dataTransfer.files[0]; // grab single file even of user selects multiple files
-    // console.log(file);
     displayFile();
   });
 
 
+/* Where the Graphing is started */
 // When graph button is clicked
 graphButton.addEventListener("click", () => {
   loadDesmos(fullContours);
@@ -63,7 +64,7 @@ removeButton.addEventListener("click", ()=>{
   displayArea.classList.add('hidden');
   dropArea.classList.remove('hidden');
   removeButton.classList.add('hidden');
-  document.getElementById("graphButton").classList.add('disable');
+  graphButton.classList.add('disable');
 })
 
 
@@ -86,7 +87,7 @@ removeButton.addEventListener("click", ()=>{
         img.onload = function() {
           displayArea.classList.remove('hidden'); //show the display image
           removeButton.classList.remove('hidden'); //show the buttons
-          document.getElementById("graphButton").classList.remove('disable');
+          graphButton.classList.remove('disable');
           fullContours = getContours("imgDisplay"); //full arrays of contours points
         };
       };

@@ -37,7 +37,13 @@
             <div class="my-canvas">
                 <!-- Canvas content will go here -->
                 <h3>Draw on the Canvas:</h3>
-                <canvas id="drawingCanvas" width="500" height="500" style="border:1px solid #000000;"></canvas>
+                <div class="canvas-container">
+                    <canvas id="drawingCanvas"></canvas>
+                </div>
+                <div style="display: flex; flex-direction: row;">
+                    <button class="remove-button" id="clearCanvas">Remove Image</button>
+                    <button class="graph-button disable" id="graphButton-canvas">Graph Now!</button>
+                </div>
             </div>
 
 
@@ -58,8 +64,8 @@
                     <span class="support">Supports: JPEG, JPG, PNG</span>
                 </div>
                 <div style="display: flex; flex-direction: row;">
-                    <button class="removeImage hidden" id="removeImage">Remove Image</button>
-                    <button class="download disable" id="graphButton">Graph Now!</button>
+                    <button class="remove-button hidden" id="removeImage">Remove Image</button>
+                    <button class="graph-button disable" id="graphButton-image">Graph Now!</button>
                 </div>
             </div>
         </div>
@@ -72,6 +78,7 @@
 <script src="contours.js"></script>
 <script src="DFT.js"></script>
 <script src="Desmos.js"></script>
+<script src="myCanvas.js"></script>
 <script src="imageDrop.js"></script>
 <!-- Script for mode-tabs toggle between modes -->
 <script>

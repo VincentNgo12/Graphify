@@ -1,3 +1,7 @@
+/* These two functions are used to extract contour coordinates data from given
+images. */
+
+
 function getContours(image){
     let src = cv.imread(image);
     let dst = cv.Mat.zeros(src.rows, src.cols, cv.CV_8UC3);
@@ -26,18 +30,24 @@ function getContours(image){
 // Method to extract coordinate from MatVector contours
 function getContourCoordinates(contours) {
     let points = {};
+    let p_index = 0; //index for the points object
     for (let i = 0; i < contours.size(); ++i) {
-        const ci = contours.get(i); //current contour
+        const ci = contours.get(i); //current contour)
+        //### Notice that ci is a flat array of points [x1, y1, x2, y2, ...]
         let contourArea = cv.contourArea(ci); //current contour area
 
+        
         if(contourArea > 10){ //filter out small contours
-            points[i] = [];
+            contourCoords = [];
+            //Loop through the flat array to get the points (j+=2 to get x and y)
             for (let j = 0; j < ci.data32S.length; j += 2){
                 let p = {}
                 p.x = ci.data32S[j]
                 p.y = ci.data32S[j+1]
-                points[i].push(p)
+                contourCoords.push(p)
             }
+            points[p_index] = contourCoords;
+            p_index++;
         }
     }
 
