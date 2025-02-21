@@ -6,21 +6,21 @@ store all user's drawn contours. */
 
 let isDrawing = false;
 let currentContour = []; //current contour
-const Contours = []; //all contours
+let Contours = []; //all contours
 
 const canvas = document.getElementById('drawingCanvas');
 const ctx = canvas.getContext('2d');
 
 
 // Mousedown event
-canvas.addEventListener('mousedown', (e) => {
+canvas.addEventListener('pointerdown', (e) => {
     isDrawing = true; //Start drawing
     currentContour = [{ x: e.offsetX, y: e.offsetY }]; //Start a new contour
 });
 
 
 // Mousemove event
-canvas.addEventListener('mousemove', (e) => {
+canvas.addEventListener('pointermove', (e) => {
     if (!isDrawing) return;
     const point = { x: e.offsetX, y: e.offsetY }; //Get the current mouse's coordinate on canvas
     currentContour.push(point); //Add the current point to the current contour
@@ -29,12 +29,17 @@ canvas.addEventListener('mousemove', (e) => {
 
 
 // Mouseup event
-canvas.addEventListener('mouseup', () => {
+canvas.addEventListener('pointerup', () => {
     if (!isDrawing) return; //stop drawing
     isDrawing = false;
     // Connect the last point to the first point to form a closed shape
     drawLine(currentContour[currentContour.length - 1], currentContour[0]);
     Contours.push(currentContour);//Add current contour to the list of contours
+
+    //If the Contour array is not empty, use should be able to graph
+    if(Contours.length !== 0){
+        document.getElementById('graphButton-canvas').classList.remove('disable');
+    }
 });
 
 
@@ -45,6 +50,18 @@ function drawLine(start, end) {
     ctx.stroke();
     ctx.closePath();
 }
+
+
+// Clear canvas and contours
+document.getElementById('clearCanvas').addEventListener('click', () => {
+    // Clear the canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // Clear the contours array
+    Contours = [];
+    currentContour = [];
+    // Disable the graph button
+    document.getElementById('graphButton-canvas').classList.add('disable');
+});
 
 
 // Function to resize canvas properly
