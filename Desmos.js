@@ -1,6 +1,7 @@
 /* Code the handle the graphing using Demos API */
 
 
+var calculatorPage = document.getElementById('calculator-page');
 var DesmosCalculator = document.getElementById('calculator');
 var myCalculator = Desmos.Calculator(DesmosCalculator);
 
@@ -58,3 +59,12 @@ function calculateDFT(fullContours){
 
     return coefficientsList;
 }
+
+
+// Close the calculator page
+document.getElementById('closeCalculator').addEventListener('click', () => {
+    calculatorPage.style.display = "none";
+    document.querySelector(".page").style.display = "flex";
+    myCalculator.destroy();
+    myCalculator = Desmos.Calculator(DesmosCalculator);
+})

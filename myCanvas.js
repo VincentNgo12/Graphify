@@ -64,6 +64,16 @@ document.getElementById('clearCanvas').addEventListener('click', () => {
 });
 
 
+/* Where the Graphing is started */
+// When graph button is clicked
+document.getElementById("graphButton-canvas").addEventListener("click", () => {
+    loadDesmos(Contours);
+    calculatorPage.style.display = "flex";
+    document.querySelector(".page").style.display = "none";
+})
+
+
+
 // Function to resize canvas properly
 function resizeCanvas() {
     const parent = canvas.parentElement;

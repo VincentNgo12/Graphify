@@ -54,7 +54,7 @@ dropArea.addEventListener("drop", (event) => {
 // When graph button is clicked
 graphButton.addEventListener("click", () => {
   loadDesmos(fullContours);
-  DesmosCalculator.style.display = "flex";
+  calculatorPage.style.display = "flex";
   document.querySelector(".page").style.display = "none";
 })
 
