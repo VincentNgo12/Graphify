@@ -269,4 +269,5 @@ h1 {
   }
   .alt-two h1:before {
     left:50%; margin-left:-30px;
+    margin-top: 1em;
   }

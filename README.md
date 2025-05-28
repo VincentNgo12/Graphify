@@ -1,9 +1,9 @@
-# GTS_Project
-https://vincentngo12.github.io/GTS_Project/
+# Graphify
+https://vincentngo12.github.io/Graphify/
 
 ## Overview
 
-GDS_Project is a static web application that allows users to draw contours on a canvas or upload images to extract contour coordinates. The application leverages the Desmos Calculator API, and OpenCV.js for image processing and contour extraction.
+Graphify is a static web application that allows users to draw contours on a canvas or upload images to extract contour coordinates. The application leverages the Desmos Calculator API, and OpenCV.js for image processing and contour extraction.
 
 ## Features
 
